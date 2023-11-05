@@ -1,0 +1,224 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce website</title>
+</head>
+
+<body>
+    <h1>Ecommerce website</h1>
+    <div class="container">
+
+    </div>
+
+
+    
+    <script>
+        console.clear()
+        let carDetail = {
+            prodcut1: {
+                name: 'shoes',
+                category: 'wearing'
+            },
+            prodcut2: {
+                name: 'shirt',
+                category: 'wearing'
+            },
+            prodcut3: {
+                name: 'pant',
+                category: 'wearing'
+            },
+            prodcut4: {
+                name: 'sock',
+                category: 'wearing'
+            }
+        };
+
+        console.log(carDetail)
+    </script>
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eCommerce Cards</title>
+    <style>
+        /* Styles for the card */
+        /* sideBar */
+        #siderBar {
+            float: right;
+            width: 25%;
+            height: 400px;
+            background-color: red;
+
+        }
+
+        #siderBar img {
+            width: 15%;
+        }
+
+        .side_flex {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: pink;
+            margin: 5px;
+        }
+
+        /* card */
+        #cardContainer {
+            /* background-color: rgb(205, 194, 194); */
+            float: left;
+            width: 70%;
+            height: 600px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(150, 135, 135, 0.2);
+            float: left;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card button {
+            padding: 10px;
+            font-weight: bold;
+            background-color: #555;
+            color: white;
+            border: none;
+            width: 100px;
+            border: 1px solid;
+        }
+
+        .card button:hover {
+
+            background-color: white;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cardContainer"></div>
+    <div id="siderBar"></div>
+
+    <!-- scripting -->
+    <script>
+        console.clear()
+        alert('open in dimension responsive (1240 x 569)  100% ')
+        // Sample data for the cards
+        let cardData = [
+            {
+                image: "https://i.pinimg.com/originals/ae/62/be/ae62be75c9507bba5731850e2f5a08e2.jpg",
+                title: "Product 1",
+                description: "Doctor Strange.",
+                price: "$19.99"
+            },
+            {
+                image: "https://www.cnet.com/a/img/resize/cec31b904720a45bb2a922b7c894134287e1e8a6/hub/2021/06/08/8264921e-87bf-4fd1-8232-4d2ff0c183ce/loki-marvel-hiddleston-tra8660-105-trl-comp-v004-1092.jpg?auto=webp&fit=bounds&height=1200&precrop=1256,1256,x860,y0&width=1200",
+                title: "Product 2",
+                description: "LOKI.",
+                price: "$29.99"
+            },
+            {
+                image: "https://www.xtrafondos.com/wallpapers/vertical/iron-man-end-game-7120.jpg",
+                title: "Product 3",
+                description: "Iron Man.",
+                price: "$39.99"
+            },
+            // Add more data for additional cards as needed
+            // ...
+        ];
+
+        let cardContainer = document.getElementById("cardContainer");
+
+        // Creating and appending cards using a for loop
+        for (let i = 0; i < cardData.length; i++) {
+            let card = document.createElement("div");
+            card.classList.add("card");
+
+            // card Image
+            let cardImage = document.createElement("img");
+            cardImage.src = cardData[i].image;
+            card.appendChild(cardImage);
+
+            // card items 
+            let cardItem = document.createElement("h3");
+            cardItem.innerText = cardData[i].title;
+            card.appendChild(cardItem);
+
+            // card detail
+            let carDetail = document.createElement("p");
+            carDetail.innerText = cardData[i].description;
+            card.appendChild(carDetail);
+
+            // card price
+            let cardPrice = document.createElement("p");
+            cardPrice.innerText = cardData[i].price;
+            card.appendChild(cardPrice);
+
+            // card button
+            let cardButton = document.createElement('button')
+            cardButton.setAttribute('onclick', 'cardAdd(this)')
+            cardButton.innerText = 'ADD'
+            card.appendChild(cardButton);
+
+            // function of( cardAdd() ) adding side bar list 
+            function cardAdd(e) {
+                let siderBar = document.getElementById('siderBar');
+                let sideDiv = document.createElement('div')
+                sideDiv.classList.add('side_flex')
+                siderBar.appendChild(sideDiv)
+
+                // side image
+                let sideImage = document.createElement('img')
+                sideImage.src = e.parentElement.querySelector('img').src
+                sideDiv.appendChild(sideImage)
+
+                //side item
+                let sideItem = document.createElement('span')
+                sideItem.innerText = (e.parentElement.querySelector('h3').innerText)
+                sideDiv.appendChild(sideItem)
+                // 
+                let count = 0
+                if ((sideDiv.querySelector('span').innerText == 'Product 3')) {
+                    //  alert('raees')
+                    let amount = document.createElement('b')
+                    amount.innerText = count
+                    if (amount.innerText > (-2)) {
+                        count++
+                    }
+                    sideDiv.appendChild(amount)
+                }
+            }
+
+
+            cardContainer.appendChild(card);
+
+        }
+
+    </script>
+</body>
+
+</html>
