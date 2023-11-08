@@ -1,47 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce website</title>
-</head>
-
-<body>
-    <h1>Ecommerce website</h1>
-    <div class="container">
-
-    </div>
-
-
-    
-    <script>
-        console.clear()
-        let carDetail = {
-            prodcut1: {
-                name: 'shoes',
-                category: 'wearing'
-            },
-            prodcut2: {
-                name: 'shirt',
-                category: 'wearing'
-            },
-            prodcut3: {
-                name: 'pant',
-                category: 'wearing'
-            },
-            prodcut4: {
-                name: 'sock',
-                category: 'wearing'
-            }
-        };
-
-        console.log(carDetail)
-    </script>
-</body>
-
-</html>-->
 <!DOCTYPE html>
 <html>
 
@@ -53,7 +9,7 @@
         #siderBar {
             float: right;
             width: 25%;
-            height: 400px;
+            height: auto;
             background-color: red;
 
         }
@@ -126,7 +82,7 @@
     <!-- scripting -->
     <script>
         console.clear()
-        alert('open in dimension responsive (1240 x 569)  100% ')
+        // alert('open in dimension responsive (1240 x 569)  100% ')
         // Sample data for the cards
         let cardData = [
             {
@@ -185,33 +141,63 @@
             card.appendChild(cardButton);
 
             // function of( cardAdd() ) adding side bar list 
+            // function cardAdd(e) {
+
+            //     let siderBar = document.getElementById('siderBar');
+            //     let sideDiv = document.createElement('div')
+            //     sideDiv.classList.add('side_flex')
+            //     siderBar.appendChild(sideDiv)
+
+
+            //     // side image
+            //     let sideImage = document.createElement('img')
+            //     sideImage.src = e.parentElement.querySelector('img').src
+            //     sideDiv.appendChild(sideImage)
+
+            //     //side item
+            //     let sideItem = document.createElement('span')
+            //     sideItem.innerText = (e.parentElement.querySelector('h3').innerText)
+            //     sideDiv.appendChild(sideItem)
+            //     // 
+            //     // let count = 0
+            //     let remover = sideDiv.querySelectorAll('span')
+            //     if ((remover.innerText == 'Product 3')) {
+            //         for (let i = 1; i < remover.length; i++) {
+            //             sideDiv.removeChild(remover[i]);
+            //         }
+            //     }
+            // }
             function cardAdd(e) {
                 let siderBar = document.getElementById('siderBar');
-                let sideDiv = document.createElement('div')
-                sideDiv.classList.add('side_flex')
-                siderBar.appendChild(sideDiv)
+                let sideDiv = document.createElement('div');
+                sideDiv.classList.add('side_flex');
+                siderBar.appendChild(sideDiv);
 
                 // side image
-                let sideImage = document.createElement('img')
-                sideImage.src = e.parentElement.querySelector('img').src
-                sideDiv.appendChild(sideImage)
+                let sideImage = document.createElement('img');
+                sideImage.src = e.parentElement.querySelector('img').src;
+                sideDiv.appendChild(sideImage);
 
-                //side item
-                let sideItem = document.createElement('span')
-                sideItem.innerText = (e.parentElement.querySelector('h3').innerText)
-                sideDiv.appendChild(sideItem)
-                // 
-                let count = 0
-                if ((sideDiv.querySelector('span').innerText == 'Product 3')) {
-                    //  alert('raees')
-                    let amount = document.createElement('b')
-                    amount.innerText = count
-                    if (amount.innerText > (-2)) {
-                        count++
+                // side item
+                let sideItem = document.createElement('span');
+                sideItem.innerText = e.parentElement.querySelector('h3').innerText;
+                sideDiv.appendChild(sideItem);
+
+                let remover = sideDiv.querySelectorAll('span');
+
+                let firstIndex = -1;
+                for (let i = 0; i < remover.length; i++) {
+                    if (remover[i].innerText === 'Product 3') {
+                        if (firstIndex === -1) {
+                            firstIndex = i; // Collect the index of the first occurrence
+                        } else {
+                            sideDiv.removeChild(remover[i]); // Remove subsequent occurrences
+                        }
                     }
-                    sideDiv.appendChild(amount)
                 }
             }
+
+
 
 
             cardContainer.appendChild(card);
